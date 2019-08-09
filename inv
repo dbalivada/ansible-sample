@@ -1,0 +1,10 @@
+[webserver]
+
+54.84.45.85
+3.83.125.66
+
+[webserver:vars]
+
+ansible_connect=ssh
+ansible_ssh_user=prasad
+ansible_ssh_pass=prasad
