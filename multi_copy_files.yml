@@ -1,0 +1,13 @@
+---
+- hosts: webserver
+  tasks:
+  - name: Copy files with multiple changes
+    copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      mode: "{{item.mode}}"
+    with_items:
+      - { src: '/home/ubuntu/prasad/file.yml',dest: '/home/prasad/vvv', mode: '0644'}
+      - { src: '/home/ubuntu/prasad/new.yml',dest: '/home/prasad/vvv', mode: '0755'}
+      - { src: '/home/ubuntu/prasad/sample.yml',dest: '/home/prasad/vvv', mode: '0644'}
+
