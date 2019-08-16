@@ -2,6 +2,11 @@
 - hosts: webserver
   become: yes
   tasks:
+<<<<<<< HEAD
   -  name: install apache2
      apt: name=apache2 state=absent
 
+=======
+  -  name: install the latest version of Apache Maven
+     apt: name=maven state=absent
+>>>>>>> ce27ea96df48d2a3990a43196755d71ffd5f6c91

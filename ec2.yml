@@ -2,11 +2,19 @@
   connection: local
   gather_facts: false
   tasks:
+<<<<<<< HEAD
       - name: create a security group in us-east-2
         ec2_group:
           name: ram
           description: an example ec2 group
           region: us-east-2
+=======
+      - name: create a security group in ap-south-1
+        ec2_group:
+          name: tej
+          description: created by white figure
+          region: ap-south-1
+>>>>>>> ce27ea96df48d2a3990a43196755d71ffd5f6c91
           aws_access_key: "AKIAWJOLIMJTHO7IQEE7"
           aws_secret_key: "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"
           rules:
