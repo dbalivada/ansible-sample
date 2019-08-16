@@ -1,0 +1,17 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+      - name: create a security group in us-east-2
+        ec2_group:
+          name: ram
+          description: an example ec2 group
+          region: us-east-2
+          aws_access_key: "AKIAWJOLIMJTHO7IQEE7"
+          aws_secret_key: "9DFRqNdCyQiAsKJ/dcROlru9bx/WxGic5bIBA9vC"
+          rules:
+            - proto: tcp
+              from_port: 80
+              to_port: 80
+              cidr_ip: 0.0.0.0/0
+        register: security_group

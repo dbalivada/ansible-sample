@@ -1,0 +1,52 @@
+---
+- hosts: all
+  remote_user: prasad
+  sudo: yes
+  tasks:
+
+  - name: add repo for java 8
+    apt_repository: repo='ppa:webupd8team/java' state=present
+
+  - name: set licence selected
+    shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+    sudo: yes
+
+  - name: set licence seen
+    shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections
+    sudo: yes
+
+  - name: install java 11
+    apt: name=openjdk-11-jdk state=latest update-cache=yes force=yes
+    sudo: yes
+  - name: add group "tomcat"
+    group: name=tomcat
+
+  - name: add user "tomcat"
+    user: name=prasad group=tomcat createhome=yes
+    become: true
+  
+  - name: create /opt/tomcat directory
+    file:
+      path: /opt/tomcat
+      state: directory
+      mode: 0755
+
+  - name: download & unarchive
+    unarchive:
+      src: http://apache.cs.utah.edu/tomcat/tomcat-9/v9.0.20/bin/apache-tomcat-9.0.20.tar.gz
+      dest: /opt/tomcat
+      remote_src: yes
+      extra_opts: [--strip-components=1]
+
+  - name: Change ownership
+    file:
+      path: /opt/tomcat
+      owner: prasad
+      group: prasad
+      mode: "u+rwx,g+rx,o=rx"
+      recurse: yes
+      state: directory
+
+  - name: Execute the script
+    command: sh /opt/tomcat/bin/startup.sh
+    sudo: yes
