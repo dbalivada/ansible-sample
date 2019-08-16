@@ -1,0 +1,4 @@
+---
+# tasks file for ram
+- name: install apach2
+  apt: name=apache2 state=present
