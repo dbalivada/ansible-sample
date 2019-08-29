@@ -1,5 +1,4 @@
----
-<<<<<<< HEAD
+
 - hosts: all
   remote_user: prasad
   sudo: yes
@@ -51,13 +50,10 @@
   - name: Execute the script
     command: sh /opt/tomcat/bin/startup.sh
     sudo: yes
-=======
+    
 - hosts: webserver
   become: yes
   tasks:
-
-  - name: install java
-    apt: name=openjdk-11-jre state=present updte_cache=yes
 
   - name: Install EPEL repo.
     yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
@@ -72,4 +68,4 @@
 
   - name: Install tomcat admin-webapps
     yum: name=tomcat-admin-webapps state=present
->>>>>>> ce27ea96df48d2a3990a43196755d71ffd5f6c91
+
