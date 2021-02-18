@@ -4,8 +4,8 @@
   tasks:
       - name: create ec2 instance
         ec2:
-          aws_access_key: "AKIAWJOLIMJTHO7IQEE7"
-          aws_secret_key: "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"
+          aws_access_key: "AKIAWJOLE7"
+          aws_secret_key: "9DFRqNdCyru9bx/WxGic5bIBA9vC"
           image: ami-07d0cf3af28718ef8
           wait: yes
           instance_type: t2.micro
